@@ -14,8 +14,6 @@ import UIKit
 
 class SuperHeroDetailViewControllerTests: AcceptanceTestCase {
 
-    fileprivate let repository = MockSuperHeroesRepository()
-
     func testShowsSuperHeroNameAsTitle() {
         let superHero = givenASuperHeroWithName()
 
@@ -68,16 +66,12 @@ class SuperHeroDetailViewControllerTests: AcceptanceTestCase {
         let superHero = SuperHero(name: "Mr. Clean",
             photo: URL(string: "https://i.annihil.us/u/prod/marvel/i/mg/c/60/55b6a28ef24fa.jpg"),
             isAvenger: isAvenger, description: "Description")
-        repository.superHeroes = [superHero]
         return superHero
     }
 
     fileprivate func openSuperHeroDetailViewController(_ superHeroName: String) {
         let superHeroDetailViewController = ServiceLocator()
-            .provideSuperHeroDetailViewController(superHeroName) as! SuperHeroDetailViewController
-        superHeroDetailViewController.presenter = SuperHeroDetailPresenter(ui: superHeroDetailViewController,
-            superHeroName: superHeroName,
-            getSuperHeroByName: GetSuperHeroByName(repository: repository))
+            .provideSuperHeroDetailViewController(superHeroName)
         let rootViewController = UINavigationController()
         rootViewController.viewControllers = [superHeroDetailViewController]
         present(viewController: rootViewController)

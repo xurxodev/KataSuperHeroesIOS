@@ -9,7 +9,7 @@
 import UIKit
 import BothamUI
 
-class SuperHeroesViewController: KataSuperHeroesViewController, BothamTableViewController, SuperHeroesUI {
+class SuperHeroesViewController: KataSuperHeroesViewController, BothamTableViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyCaseView: UILabel!

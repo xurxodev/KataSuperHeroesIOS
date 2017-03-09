@@ -14,8 +14,6 @@ import UIKit
 
 class SuperHeroesViewControllerTests: AcceptanceTestCase {
 
-    fileprivate let repository = MockSuperHeroesRepository()
-
     func testShowsEmptyCaseIfThereAreNoSuperHeroes() {
         givenThereAreNoSuperHeroes()
 
@@ -114,15 +112,12 @@ class SuperHeroesViewControllerTests: AcceptanceTestCase {
                 isAvenger: avengers, description: "Description - \(i)")
             superHeroes.append(superHero)
         }
-        repository.superHeroes = superHeroes
         return superHeroes
     }
 
     fileprivate func openSuperHeroesViewController() {
         let superHeroesViewController = ServiceLocator()
-            .provideSuperHeroesViewController() as! SuperHeroesViewController
-        superHeroesViewController.presenter = SuperHeroesPresenter(ui: superHeroesViewController,
-                getSuperHeroes: GetSuperHeroes(repository: repository))
+            .provideSuperHeroesViewController()
         let rootViewController = UINavigationController()
         rootViewController.viewControllers = [superHeroesViewController]
         present(viewController: rootViewController)

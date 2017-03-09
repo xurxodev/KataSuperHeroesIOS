@@ -21,7 +21,7 @@ class ServiceLocator {
     func provideSuperHeroesViewController() -> UIViewController {
         let superHeroesViewController: SuperHeroesViewController =
         storyBoard.instantiateViewController("SuperHeroesViewController")
-        let presenter = provideSuperHeroesPresenter(superHeroesViewController)
+        let presenter = SuperHeroesPresenter()
         let dataSource = provideSuperHeroesDataSource()
         superHeroesViewController.presenter = presenter
         superHeroesViewController.dataSource = dataSource
@@ -33,27 +33,12 @@ class ServiceLocator {
     func provideSuperHeroDetailViewController(_ superHeroName: String) -> UIViewController {
         let viewController: SuperHeroDetailViewController =
         storyBoard.instantiateViewController("SuperHeroDetailViewController")
-        viewController.presenter = provideSuperHeroDetailPresenter(viewController, superHeroName: superHeroName)
+        viewController.presenter = SuperHeroDetailPresenter()
         return viewController
-    }
-
-    fileprivate func provideSuperHeroDetailPresenter(_ ui: SuperHeroDetailUI,
-        superHeroName: String) -> SuperHeroDetailPresenter {
-        let getSuperHeroByName = GetSuperHeroByName(repository: SuperHeroesRepository())
-        return SuperHeroDetailPresenter(ui: ui, superHeroName: superHeroName, getSuperHeroByName: getSuperHeroByName)
     }
 
     fileprivate func provideSuperHeroesDataSource() -> BothamTableViewDataSource<SuperHero, SuperHeroTableViewCell> {
         return BothamTableViewDataSource<SuperHero, SuperHeroTableViewCell>()
-    }
-
-    fileprivate func provideSuperHeroesPresenter(_ ui: SuperHeroesUI) -> SuperHeroesPresenter {
-        let getSuperHeroes = provideGetSuperHeroesUseCase()
-        return SuperHeroesPresenter(ui: ui, getSuperHeroes: getSuperHeroes)
-    }
-
-    fileprivate func provideGetSuperHeroesUseCase() -> GetSuperHeroes {
-        return GetSuperHeroes(repository: SuperHeroesRepository())
     }
 
     fileprivate lazy var storyBoard: BothamStoryboard = {

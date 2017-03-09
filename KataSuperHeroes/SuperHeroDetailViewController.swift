@@ -11,7 +11,7 @@ import UIKit
 import BothamUI
 import SDWebImage
 
-class SuperHeroDetailViewController: KataSuperHeroesViewController, SuperHeroDetailUI {
+class SuperHeroDetailViewController: KataSuperHeroesViewController {
 
     @IBOutlet weak var avengersBadgeImageView: UIImageView!
 
