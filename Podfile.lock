@@ -21,18 +21,18 @@ PODS:
 DEPENDENCIES:
   - BothamUI (~> 2.0)
   - KIF (~> 3.0)
-  - MarvelAPIClient (from `git@github.com:Karumi/MarvelApiClient.git`)
+  - MarvelAPIClient (from `https://github.com/Karumi/MarvelApiClient.git`)
   - Nimble (~> 5.0)
   - SDWebImage
 
 EXTERNAL SOURCES:
   MarvelAPIClient:
-    :git: git@github.com:Karumi/MarvelApiClient.git
+    :git: https://github.com/Karumi/MarvelApiClient.git
 
 CHECKOUT OPTIONS:
   MarvelAPIClient:
     :commit: bce0e94e8c84910a5a502402153917c8b56e8780
-    :git: git@github.com:Karumi/MarvelApiClient.git
+    :git: https://github.com/Karumi/MarvelApiClient.git
 
 SPEC CHECKSUMS:
   BothamNetworking: ca91ad12113d8fae57aecec3a785008a81fcb22e
@@ -45,6 +45,6 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 4d115d86cb245e0b2750ccdfe1b823f0e44df710
+PODFILE CHECKSUM: aa544ce55d797adcc07c539e0acb5ba8181484d5
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
